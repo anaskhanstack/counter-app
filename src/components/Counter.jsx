@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
 
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(3),
     },
   },
   paper: {
@@ -32,7 +32,7 @@ const Counter = () => {
 
   return (
     <Grid direction="container">
-      <Grid item xs={4}>
+      <Grid item xs={3}>
         <Paper className={classes.paper}>
           {counter < 1 ? "zero" : counter}
         </Paper>
