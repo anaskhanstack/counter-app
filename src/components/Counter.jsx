@@ -4,18 +4,11 @@ const Counter = () => {
   const [counter, setCounter] = useState(0);
 
   const Increment = () => {
-    let sum = counter;
-    sum += 1;
-    setCounter(sum);
+    setCounter(counter + 1);
   };
 
   const Decrement = () => {
-    let sum = counter;
-    sum -= 1;
-    if (sum < 0) {
-      sum = 0;
-    }
-    setCounter(sum);
+    counter < 0 ? setCounter(counter) : setCounter(counter - 1);
   };
 
   return (
