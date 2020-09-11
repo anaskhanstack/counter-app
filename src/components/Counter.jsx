@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { INCREMENT, DECREMENT } from "./type";
@@ -21,16 +21,6 @@ const useStyles = makeStyles((theme) => ({
 const Counter = (props) => {
   const classes = useStyles();
 
-  const [counter, setCounter] = useState(props.counter.value);
-
-  const Increment = () => {
-    setCounter(counter + 1);
-  };
-
-  const Decrement = () => {
-    counter < 0 ? setCounter(counter) : setCounter(counter - 1);
-  };
-
   return (
     <Grid>
       <div
@@ -41,23 +31,30 @@ const Counter = (props) => {
         }}
       >
         <Paper className={classes.paper}>
-          {counter < 1 ? "zero" : counter}
+          {props.counter.value < 1 ? "zero" : props.counter.value}
         </Paper>
 
         <div className={classes.root}>
           <Button
-            onClick={() => Increment()}
+            onClick={() => props.handleIncrement(props.counter)}
             variant="contained"
             color="secondary"
           >
             {INCREMENT}
           </Button>
-          {counter < 1 ? (
-            <Button onClick={() => Decrement()} variant="contained" disabled>
+          {props.counter.value < 1 ? (
+            <Button
+              onClick={() => props.handleDecrement(props.counter)}
+              variant="contained"
+              disabled
+            >
               {DECREMENT}
             </Button>
           ) : (
-            <Button onClick={() => Decrement()} variant="contained">
+            <Button
+              onClick={() => props.handleDecrement(props.counter)}
+              variant="contained"
+            >
               {DECREMENT}
             </Button>
           )}
