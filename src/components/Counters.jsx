@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Counter from "./Counter";
 import { Button } from "@material-ui/core";
+import CustomizedBadges from "./ShoppingBatch";
 
 const counterList = [
   {
@@ -15,12 +16,8 @@ const counterList = [
     _id: 3,
     value: 0,
   },
-  {
-    _id: 4,
-    value: 0,
-  },
 ];
-export default function Counters() {
+export default function Counters({ getCounter }) {
   const [counters, setCounter] = useState(counterList);
 
   const handleReset = () => {
@@ -49,6 +46,7 @@ export default function Counters() {
 
   return (
     <React.Fragment>
+      <CustomizedBadges count={counters.length} />
       {counters.map((counter) => {
         return (
           <Counter

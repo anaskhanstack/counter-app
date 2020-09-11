@@ -1,12 +1,11 @@
 import React from "react";
 import Counters from "./components/Counters";
-import CustomizedBadges from "./components/ShoppingBatch";
 
 export default function App() {
+  const getCounter = (count) => {};
   return (
     <div>
-      <CustomizedBadges />
-      <Counters />
+      <Counters getCounter={getCounter} />
     </div>
   );
 }
