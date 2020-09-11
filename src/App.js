@@ -1,10 +1,10 @@
 import React from "react";
-import Counter from "./components/Counter";
+import Counters from "./components/Counters";
 
 export default function App() {
   return (
     <div>
-      <Counter />
+      <Counters />
     </div>
   );
 }

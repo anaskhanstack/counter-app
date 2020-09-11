@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { Button, Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { INCREMENT, DECREMENT } from "./type";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-
     "& > *": {
-      margin: theme.spacing(3),
+      margin: theme.spacing(1),
     },
   },
   paper: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(1),
+    height: 20,
     textAlign: "center",
     fontSize: 19,
+    width: 70,
   },
 }));
 
@@ -32,32 +33,36 @@ const Counter = () => {
 
   return (
     <Grid direction="container">
-      <Grid item xs={3}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
         <Paper className={classes.paper}>
           {counter < 1 ? "zero" : counter}
         </Paper>
-      </Grid>
 
-      <Grid item xs={6}>
         <div className={classes.root}>
           <Button
             onClick={() => Increment()}
             variant="contained"
             color="secondary"
           >
-            Increment
+            {INCREMENT}
           </Button>
-          {counter < 0 ? (
+          {counter < 1 ? (
             <Button onClick={() => Decrement()} variant="contained" disabled>
-              Decrement
+              {DECREMENT}
             </Button>
           ) : (
             <Button onClick={() => Decrement()} variant="contained">
-              Decrement
+              {DECREMENT}
             </Button>
           )}
         </div>
-      </Grid>
+      </div>
     </Grid>
   );
 };
