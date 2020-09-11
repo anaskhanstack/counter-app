@@ -18,10 +18,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Counter = () => {
+const Counter = (props) => {
   const classes = useStyles();
 
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(props.counter.value);
 
   const Increment = () => {
     setCounter(counter + 1);
@@ -32,7 +32,7 @@ const Counter = () => {
   };
 
   return (
-    <Grid direction="container">
+    <Grid>
       <div
         style={{
           display: "flex",
