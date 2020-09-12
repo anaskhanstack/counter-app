@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Counter = (props) => {
   const classes = useStyles();
-
+  const { counter, handleDecrement, handleIncrement } = props;
   return (
     <Grid>
       <div
@@ -31,20 +31,20 @@ const Counter = (props) => {
         }}
       >
         <Paper className={classes.paper}>
-          {props.counter.value < 1 ? "zero" : props.counter.value}
+          {counter.value < 1 ? "zero" : counter.value}
         </Paper>
 
         <div className={classes.root}>
           <Button
-            onClick={() => props.handleIncrement(props.counter)}
+            onClick={() => handleIncrement(counter)}
             variant="contained"
             color="secondary"
           >
             {INCREMENT}
           </Button>
-          {props.counter.value < 1 ? (
+          {counter.value < 1 ? (
             <Button
-              onClick={() => props.handleDecrement(props.counter)}
+              onClick={() => handleDecrement(counter)}
               variant="contained"
               disabled
             >
@@ -52,7 +52,7 @@ const Counter = (props) => {
             </Button>
           ) : (
             <Button
-              onClick={() => props.handleDecrement(props.counter)}
+              onClick={() => handleDecrement(counter)}
               variant="contained"
             >
               {DECREMENT}
