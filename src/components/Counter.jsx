@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, Grid, Paper } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
 import { INCREMENT, DECREMENT } from "./type";
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Counter = (props) => {
   const classes = useStyles();
-  const { counter, handleDecrement, handleIncrement } = props;
+  const { counter, handleDecrement, handleIncrement, handleDelete } = props;
   return (
     <Grid>
       <div
@@ -48,16 +50,23 @@ const Counter = (props) => {
               variant="contained"
               disabled
             >
-              {DECREMENT}
+              <strong>{DECREMENT}</strong>
             </Button>
           ) : (
             <Button
               onClick={() => handleDecrement(counter)}
               variant="contained"
             >
-              {DECREMENT}
+              <strong>{DECREMENT}</strong>
             </Button>
           )}
+          <IconButton
+            aria-label="delete"
+            className={classes.margin}
+            onClick={() => handleDelete(counter)}
+          >
+            <DeleteIcon color="secondary" />
+          </IconButton>
         </div>
       </div>
     </Grid>

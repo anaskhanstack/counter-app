@@ -16,6 +16,10 @@ const counterList = [
     _id: 3,
     value: 0,
   },
+  {
+    _id: 4,
+    value: 0,
+  },
 ];
 export default function Counters({ getCounter }) {
   const [counters, setCounter] = useState(counterList);
@@ -44,6 +48,10 @@ export default function Counters({ getCounter }) {
     setCounter(counterList);
   };
 
+  const handleDelete = (counter) => {
+    const counterList = counters.filter((c) => c._id !== counter._id);
+    setCounter(counterList);
+  };
   return (
     <React.Fragment>
       <CustomizedBadges count={counters.length} />
@@ -54,12 +62,15 @@ export default function Counters({ getCounter }) {
             counter={counter}
             handleIncrement={handleIncrement}
             handleDecrement={handleDecrement}
+            handleDelete={handleDelete}
           />
         );
       })}
-      <Button onClick={handleReset} variant="contained" color="primary">
-        Reset
-      </Button>
+      {counters.length > 0 ? (
+        <Button onClick={handleReset} variant="contained" color="primary">
+          Reset
+        </Button>
+      ) : null}
     </React.Fragment>
   );
 }
